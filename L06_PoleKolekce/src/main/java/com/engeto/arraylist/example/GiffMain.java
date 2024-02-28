@@ -44,11 +44,10 @@ public class GiffMain {
 
     // vypocet celkove sumy naseho listu
     double sum = 0;
-    for (Giff oneElemen: listOfGiff) {
+    for (Giff oneElemen : listOfGiff) {
       sum += oneElemen.getPrice();
     }
     System.out.println(sum);
-
 
     listOfGiff.forEach(System.out::println);
     // seradit , ale jak vi Java jak radit, muzeme si to definovat napriklad pomoci ceny vzestupne
