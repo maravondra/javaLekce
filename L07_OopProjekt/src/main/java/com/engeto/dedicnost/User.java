@@ -20,8 +20,12 @@ public class User {
     this.yearOfBoarding = yearOfBoarding;
   }
 
-  protected boolean logIn(String password) {
+  public boolean logIn(String password) {
     return this.password.equals(password);
+  }
+
+  private boolean checkCorrectYearBoarding() {
+    return this.yearOfBoarding < 2000;
   }
 
   public String getName() {

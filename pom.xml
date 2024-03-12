@@ -19,6 +19,8 @@
   <modules>
     <module>L06_PoleKolekce</module>
     <module>L07_OopProjekt</module>
+    <module>L08_API</module>
+      <module>L09_Maven</module>
   </modules>
 
 </project>

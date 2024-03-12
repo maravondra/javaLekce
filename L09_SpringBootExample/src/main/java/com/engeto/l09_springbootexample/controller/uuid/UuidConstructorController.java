@@ -1,0 +1,28 @@
+package com.engeto.l09_springbootexample.controller.uuid;
+
+
+import com.engeto.l09_springbootexample.service.CustomerService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
+
+// 3.3. @Autowired on Constructors
+@RestController
+@RequestMapping("uuid")
+public class UuidConstructorController {
+
+
+    CustomerService customerService;
+
+    public UuidConstructorController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
+
+    @GetMapping("v3/uuid")
+    public UUID getUuid() {
+        //CustomerService customerService = new CustomerService();
+        return customerService.generateUUID();
+    }
+}
