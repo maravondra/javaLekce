@@ -1,4 +1,4 @@
-package com.engeto.l09_springbootexample.controller.status;
+package com.engeto.l09_springbootexample.controller.a2.status;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

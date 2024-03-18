@@ -1,4 +1,4 @@
-package com.engeto.easy_example.body;
+package com.engeto.l09_springbootexample.controller.a1.body;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

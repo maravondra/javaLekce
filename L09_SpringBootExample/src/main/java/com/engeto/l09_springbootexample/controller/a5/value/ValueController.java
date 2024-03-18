@@ -1,4 +1,4 @@
-package com.engeto.l09_springbootexample.controller.value;
+package com.engeto.l09_springbootexample.controller.a5.value;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;

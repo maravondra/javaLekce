@@ -1,4 +1,4 @@
-package com.engeto.easy_example.controler;
+package com.engeto.easy_example.a1.controler;
 
 
 import org.springframework.web.bind.annotation.*;

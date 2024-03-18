@@ -1,4 +1,4 @@
-package com.engeto.l09_springbootexample.controller.path;
+package com.engeto.easy_example.a2.path;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("src/main/java/com/engeto/path")
+@RequestMapping("path")
 public class PathController {
 
 

@@ -1,4 +1,4 @@
-package com.engeto.easy_example.query;
+package com.engeto.easy_example.a3.query;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

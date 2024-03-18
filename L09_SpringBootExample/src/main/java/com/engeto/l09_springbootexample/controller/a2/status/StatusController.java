@@ -1,10 +1,13 @@
-package com.engeto.l09_springbootexample.controller.status;
+package com.engeto.l09_springbootexample.controller.a2.status;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.time.Year;
 
 @RestController
 @RequestMapping("status")
@@ -32,4 +35,22 @@ public class StatusController {
         return new ResponseEntity(marek, HttpStatus.CREATED);
     }
 
+    @GetMapping("/age")
+    ResponseEntity<String> age(
+            @RequestParam("yearOfBirth") int yearOfBirth) {
+        int currentYear = Year.now().getValue();
+        if (yearOfBirth > currentYear) {
+            return new ResponseEntity<>(
+                    "Year of birth cannot be in the future",
+                    HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(
+                "Your age is " + calculateAge(yearOfBirth),
+                HttpStatus.OK);
+    }
+
+    private int calculateAge(int yearOfBirth) {
+        return Year.now().getValue() - yearOfBirth;
+    }
 }

@@ -1,4 +1,4 @@
-package com.engeto.l09_springbootexample.controller.body;
+package com.engeto.l09_springbootexample.controller.a1.body;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

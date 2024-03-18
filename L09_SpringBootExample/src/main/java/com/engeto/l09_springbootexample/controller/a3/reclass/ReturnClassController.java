@@ -1,4 +1,4 @@
-package com.engeto.l09_springbootexample.controller.reclass;
+package com.engeto.l09_springbootexample.controller.a3.reclass;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
