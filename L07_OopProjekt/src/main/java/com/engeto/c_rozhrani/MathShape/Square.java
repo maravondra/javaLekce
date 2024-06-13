@@ -1,4 +1,4 @@
-package com.engeto.rozhrani;
+package com.engeto.c_rozhrani.MathShape;
 
 
 class Square implements Shape {

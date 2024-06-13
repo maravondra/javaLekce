@@ -1,12 +1,7 @@
-package com.engeto.dedicnost;
+package com.engeto.a_dedicnost.zoo;
 
 /**
- * bezny uzivatel v zoo
- */
-
-/*
-  Vytvpro si beznehoe uzivatele u ktereho mame nasledujici atributy
-      jmeno, heslo a datum nastupu - je logicke, ze tyto hodnoty jsou platne pro vsechny zamestnance v zoo, jak pro pokladni tak i pro osetrovatele
+ * Predek pro chovatele a pokladni v zoo
  */
 public class User {
 

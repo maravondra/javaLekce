@@ -1,4 +1,4 @@
-package com.engeto.oop;
+package com.engeto.a_dedicnost.oop;
 
 public class GreetManager {
 

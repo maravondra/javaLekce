@@ -1,4 +1,4 @@
-package com.engeto.rozhrani.example;
+package com.engeto.c_rozhrani.compress;
 
 public class MainCompress {
 

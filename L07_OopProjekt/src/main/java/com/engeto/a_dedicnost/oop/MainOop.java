@@ -1,4 +1,5 @@
-package com.engeto.oop;
+package com.engeto.a_dedicnost.oop;
+
 
 public class MainOop {
 
@@ -23,18 +24,6 @@ public class MainOop {
     // pomoci getter
     greetManager.setNameOfUser("marek vondra");
     System.out.println(greetManager.sayHelloV4());
-
-    /**
-     *  Zapouzdreni - v md souboru
-     */
-
-    /**
-     * Konstruktory
-     */
-
-    /**
-     * Abstrakce - v md souboru
-     */
 
   }
 
