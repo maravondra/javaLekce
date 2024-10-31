@@ -4,12 +4,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.OptionalDouble;
-import java.util.function.ToDoubleFunction;
 
 public class MathOperationMain {
 
   public static void main(String[] args) {
-    List<Integer> number = Arrays.asList(1,5,7,2,6,8);
+    List<Integer> number = Arrays.asList(1, 5, 7, 2, 6, 8);
 
     Integer max = Collections.max(number);
     System.out.println(max);
@@ -29,6 +28,8 @@ public class MathOperationMain {
 
     // spocitat sumu pomoci streamu
     System.out.println(number.stream().mapToDouble(a -> a).sum());
+
+
   }
 
 }

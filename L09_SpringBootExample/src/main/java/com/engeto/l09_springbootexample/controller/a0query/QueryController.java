@@ -1,7 +1,10 @@
-package com.engeto.c_Controller;
+package com.engeto.l09_springbootexample.controller.a0query;
 
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 
