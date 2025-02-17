@@ -8,7 +8,7 @@ import java.util.List;
 public class CollectionMain {
 
     public static void main(String[] args) {
-        ArrayList<Integer> numbers = new ArrayList<>(List.of(5, 10, 3, 8, 15));
+        List<Integer> numbers = (List.of(5, 10, 3, 8, 15));
 
 
         // Nalezení minima a maxima
