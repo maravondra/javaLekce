@@ -1,35 +1,37 @@
 package com.engeto.d_set;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
 
 public class SetMain {
 
     public static void main(String[] args) {
-        Set<Integer> numbers = new HashSet<>();
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(1);
+        HashSet<String> set = new HashSet<>();
 
-        numbers.forEach(System.out::println);
+        // Přidání prvků
+        set.add("Java");
+        set.add("Python");
+        set.add("C++");
 
-        // get size
-        System.out.println(numbers.size());
+        // Pokus o přidání duplikátu (vrátí false)
+        boolean added = set.add("Java");
+        System.out.println("Přidání duplikátu 'Java': " + added);
 
-        // contains
-        System.out.println(numbers.contains(1));
-        System.out.println(numbers.contains(0)); // false protoze neexistuje
+        // Zobrazení velikosti Setu
+        System.out.println("Velikost Setu: " + set.size());
 
-        numbers.clear();
-        numbers.forEach(System.out::println);
+        // Kontrola existence prvku
+        if (set.contains("Python")) {
+            System.out.println("'Python' je v Setu.");
+        }
 
-        // vytvorime si Set pomoci predem definovanych hodnot
-        Set<String> stringsSet = new HashSet<>(Arrays.asList("a", "b", "c"));
+        // Odebrání prvku
+        set.remove("C++");
 
-        // prevod na Array
-        Object[] stringsSetAsArray = stringsSet.toArray();
-        System.out.println(Arrays.toString(stringsSetAsArray));
+        // Výpis všech prvků
+        System.out.println("Prvky v Setu: " + set);
+
+        // Vyprázdnění Setu
+        set.clear();
+        System.out.println("Po vyprázdnění: " + set);
     }
 }
