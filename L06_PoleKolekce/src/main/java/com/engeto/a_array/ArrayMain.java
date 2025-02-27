@@ -1,6 +1,7 @@
 package com.engeto.a_array;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArrayMain {
 
@@ -51,6 +52,14 @@ public class ArrayMain {
             heightRose[i] = i;
         }
         System.out.println(Arrays.toString(heightRose));
+
+        for (int i = 0; i < heightRose.length; i++) {
+            Random randomNumber = new Random();
+            heightRose[i] = randomNumber.nextInt();
+        }
+        System.out.println(
+                Arrays.toString(heightRose)
+        );
 
         // naplneni rucne
         String[] simpsons = {"Homer", "Marge", "Bart", "Lisa", "Maggie"};
