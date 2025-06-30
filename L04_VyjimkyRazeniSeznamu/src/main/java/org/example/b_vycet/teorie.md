@@ -1,9 +1,10 @@
 # Enum
 
-enum (zkráceno z "enumeration") je speciální typ v Javě, který reprezentuje skupinu konstant (
-nezměnitelných hodnot). Používá se, když máš proměnnou, která může nabývat pouze předem definovaných
-hodnot. Tím zvyšuješ čitelnost a bezpečnost kódu, protože omezíš množinu možných hodnot a usnadníš
-práci s nimi.
+`enum` (z anglického enumeration – výčet) slouží k definici **pevně daného seznamu hodnot**. Používá
+se
+tam, kde má proměnná nabývat pouze určitých **předem definovaných stavů**.
+
+Například: dny v týdnu, stavy objednávky, typy paliva, atd.
 
 ``` java
 enum DenVTydnu {
