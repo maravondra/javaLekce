@@ -124,7 +124,7 @@ zdědil konfiguraci z
 org.example:lekce_engeto verze 1.0-SNAPSHOT.
 
 `<groupId>` - Jedná se o identifikátor skupiny, který identifikuje projekt. V tomto případě je
-skupina com.engeto.
+skupina com.v1.
 
 `<artifactId>` - Toto je identifikátor artefaktu (tj. projektu). V tomto případě je to L09_Maven.
 

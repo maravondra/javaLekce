@@ -11,9 +11,9 @@
         <option value="$PROJECT_DIR$/wedding/pom.xml" />
         <option value="$PROJECT_DIR$/easy_example/pom.xml" />
         <option value="$PROJECT_DIR$/L09_SpringBootExample/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
       </list>
     </option>
-    <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
