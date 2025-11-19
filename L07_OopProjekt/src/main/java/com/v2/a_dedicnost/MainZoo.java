@@ -1,4 +1,4 @@
-package org.example.b_rozhrani.zoo;
+package com.v2.a_dedicnost;
 
 public class MainZoo {
 
@@ -28,18 +28,6 @@ public class MainZoo {
     Employee e2 = jana;
     e1.performDuty();
     e2.performDuty();
-
-    // Interface reference
-    ShiftWorker worker = jana;
-    System.out.println(
-        "Je " + worker.getClass().getSimpleName() + " na směně? " + worker.isOnShift());
-
-    // Konec směny
-    worker.endShift();
-    // worker.performDuty(); // nepůjde, protože není na směně
-
-    david.endShift();
-    jana.logOut();
 
     System.out.println();
 

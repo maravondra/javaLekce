@@ -1,4 +1,4 @@
-package org.example.c_record;
+package com.v2.c_record;
 
 
 import java.util.List;

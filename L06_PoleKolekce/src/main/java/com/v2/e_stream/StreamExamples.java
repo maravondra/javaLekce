@@ -25,7 +25,7 @@ public class StreamExamples {
         .mapToInt(x -> x.intValue())
 //        .mapToInt(Integer::intValue)
         .average();
-
+    
     if (average.isPresent()) {
       System.out.println("Průměr čísel: " + average.getAsDouble());
     } else {

@@ -1,4 +1,4 @@
-package org.example.a_dedicnost;
+package com.v2.b_rozhrani.zoo;
 
 /**
  * 🦣 2. Třída Keeper (Chovatel)
@@ -11,10 +11,11 @@ package org.example.a_dedicnost;
  * <p>
  * - Override logOut() pro personalizované chování
  */
-public class Keeper extends Employee {
+public class Keeper extends Employee implements ShiftWorker {
 
   private final String animalType;
   private final double animalWeightKg;
+  private boolean onShift = false;
 
   public Keeper(String name, String password, int yearOfHire, String animalType,
       double animalWeightKg) {
@@ -44,6 +45,29 @@ public class Keeper extends Employee {
   public void logOut() {
     System.out.println(getName() + " (chovatel) dokončil směnu a odhlásil se.");
     super.logOut();
+  }
+
+
+  // Implementace metod z interface
+  @Override
+  public void startShift() {
+    if (isLoggedIn()) {
+      onShift = true;
+      System.out.println(getName() + " začal směnu.");
+    } else {
+      System.out.println(getName() + " se musí přihlásit před začátkem směny.");
+    }
+  }
+
+  @Override
+  public void endShift() {
+    onShift = false;
+    System.out.println(getName() + " ukončil směnu.");
+  }
+
+  @Override
+  public boolean isOnShift() {
+    return onShift;
   }
 }
 

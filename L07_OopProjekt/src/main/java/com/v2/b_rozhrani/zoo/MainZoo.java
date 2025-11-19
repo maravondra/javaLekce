@@ -1,4 +1,4 @@
-package org.example.a_dedicnost;
+package com.v2.b_rozhrani.zoo;
 
 public class MainZoo {
 
@@ -29,6 +29,18 @@ public class MainZoo {
     e1.performDuty();
     e2.performDuty();
 
+    // Interface reference
+    ShiftWorker worker = jana;
+    System.out.println(
+        "Je " + worker.getClass().getSimpleName() + " na směně? " + worker.isOnShift());
+
+    // Konec směny
+    worker.endShift();
+    // worker.performDuty(); // nepůjde, protože není na směně
+
+    david.endShift();
+    jana.logOut();
+
     System.out.println();
 
     // Přetypování
@@ -39,7 +51,7 @@ public class MainZoo {
     // Odhlášení
     e1.logOut();
     e2.logOut();
-  
+
   }
 }
 

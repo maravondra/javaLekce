@@ -1,4 +1,4 @@
-package org.example.b_rozhrani.zoo;
+package com.v2.b_rozhrani.zoo;
 
 /**
  * 💰 3. Třída Cashier (Pokladní)

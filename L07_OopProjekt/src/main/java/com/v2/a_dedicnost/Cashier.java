@@ -1,4 +1,4 @@
-package org.example.a_dedicnost;
+package com.v2.a_dedicnost;
 
 /**
  * 💰 3. Třída Cashier (Pokladní)

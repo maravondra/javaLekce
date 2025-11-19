@@ -1,4 +1,4 @@
-package org.example.c_record;
+package com.v2.c_record;
 
 public record Animal(String species, String name, double weightKg, int age) {
 

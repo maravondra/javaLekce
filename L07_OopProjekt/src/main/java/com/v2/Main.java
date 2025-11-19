@@ -1,4 +1,4 @@
-package org.example;
+package com.v2;
 
 public class Main {
 

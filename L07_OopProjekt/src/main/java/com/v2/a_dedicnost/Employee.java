@@ -1,4 +1,4 @@
-package org.example.b_rozhrani.zoo;
+package com.v2.a_dedicnost;
 
 /**
  * Reprezentuje obecného zaměstnance zoo.
