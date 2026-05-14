@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartCity Traffic Control</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans h-screen overflow-hidden">
+
+<div id="app" class="h-full flex flex-col">
+    <!-- Header -->
+    <header class="flex justify-between items-center p-6 border-b border-slate-700 bg-slate-900 z-10">
+        <div>
+            <h1 class="text-3xl font-black tracking-tighter text-blue-400">SMART CITY <span class="text-white">OS</span></h1>
+            <p class="text-slate-400 text-sm">Centralized Traffic Management System</p>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right">
+                <div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">System Status</div>
+                <div class="flex items-center text-green-400 font-mono text-sm">
+                    <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span> ONLINE
+                </div>
+            </div>
+            <div v-if="isLocked" class="flex items-center text-red-500 font-mono text-xs animate-bounce mr-4">
+                <span class="mr-2">⚠️</span> SYSTEM LOCKED
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="flex flex-1 overflow-hidden">
+
+        <!-- LEFT: Grid křižovatek (Scrollable) -->
+        <main class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+            <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
+                <div v-for="light in trafficLights" :key="light.id"
+                     :class="[
+                    'bg-slate-800 rounded-2xl p-6 border transition-all duration-500 shadow-xl hover:scale-[1.02]',
+                    light.status === 'EMERGENCY_GREEN' ? 'border-red-500 ring-2 ring-red-500/20 bg-slate-800' : 'border-slate-700'
+                 ]">
+
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="font-bold text-xl text-slate-200">{{ light.locationName }}</h3>
+                            <p v-if="light.status === 'EMERGENCY_GREEN'" class="text-red-500 text-xs font-black animate-pulse mt-1">
+                                🚨 EMERGENCY PRIORITY ACTIVE
+                            </p>
+                        </div>
+                        <span class="px-2 py-1 rounded text-[10px] font-mono bg-slate-900 text-slate-500 border border-slate-700 uppercase">
+                            {{ light.id.substring(0,8) }}
+                        </span>
+                    </div>
+
+                    <!-- Semafor Visual -->
+                    <div :class="[
+                        'flex flex-col items-center gap-3 p-4 rounded-xl mb-6 w-20 mx-auto border transition-colors duration-500',
+                        light.status === 'EMERGENCY_GREEN' ? 'bg-red-950/30 border-red-500' : 'bg-slate-900 border-slate-700'
+                     ]">
+                        <div :class="['w-8 h-8 rounded-full shadow-lg transition-all duration-500', light.status.includes('RED') ? 'bg-red-500 shadow-red-900' : 'bg-slate-700']"></div>
+                        <div :class="['w-8 h-8 rounded-full shadow-lg transition-all duration-500', light.status === 'YELLOW' || light.status === 'MAINTENANCE_FLASHING' ? 'bg-yellow-500 shadow-yellow-900' : 'bg-slate-700']"></div>
+                        <div :class="['w-8 h-8 rounded-full shadow-lg transition-all duration-500',
+                            light.status.includes('GREEN') ? 'bg-green-500 shadow-green-900' : 'bg-slate-700',
+                            light.status === 'EMERGENCY_GREEN' ? 'animate-[ping_1s_infinite] shadow-[0_0_20px_rgba(34,197,94,0.8)]' : (light.status === 'GREEN' ? 'animate-pulse' : '')
+                        ]"></div>
+                    </div>
+
+                    <button @click="triggerAmbulance(light.id)"
+                            :disabled="light.status === 'EMERGENCY_GREEN'"
+                            :class="[
+                            'w-full py-3 rounded-xl font-bold transition-all flex items-center justify-center gap-2 group shadow-lg',
+                            light.status === 'EMERGENCY_GREEN' ? 'bg-slate-700 cursor-not-allowed opacity-50 text-slate-400' : 'bg-red-600 hover:bg-red-500 active:scale-95 text-white'
+                        ]">
+                        <span :class="light.status === 'EMERGENCY_GREEN' ? '' : 'group-hover:animate-bounce'">
+                            {{ light.status === 'EMERGENCY_GREEN' ? '🚑 CLEARING PATH...' : '🚑 AMBULANCE PASS' }}
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- RIGHT: Sidebar pro trasy -->
+        <aside class="w-80 bg-slate-800 border-l border-slate-700 p-6 flex flex-col shadow-2xl">
+            <div class="mb-8">
+                <h2 class="text-blue-400 font-black text-sm uppercase tracking-widest mb-1 flex items-center gap-2">
+                    <span class="text-lg">🗺️</span> Route Dispatcher
+                </h2>
+                <p class="text-slate-500 text-xs">Select predefined emergency corridor</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Route Card: Main Avenue -->
+                <button @click="triggerRoute('MAIN_AVENUE')"
+                        class="w-full p-4 rounded-2xl bg-slate-900 border border-blue-500/30 hover:border-blue-400 transition-all text-left group">
+                    <div class="text-blue-400 font-bold mb-1 group-hover:text-blue-300">Main Avenue</div>
+                    <div class="text-[10px] text-slate-500 mb-3 uppercase font-mono">3 Intersections • 15s Wave</div>
+                    <div class="py-2 bg-blue-600 group-hover:bg-blue-500 text-white text-center rounded-lg text-xs font-black uppercase tracking-tighter">
+                        Activate Wave
+                    </div>
+                </button>
+
+                <!-- Route Card: Historic Center -->
+                <button @click="triggerRoute('HISTORIC_CENTER')"
+                        class="w-full p-4 rounded-2xl bg-slate-900 border border-indigo-500/30 hover:border-indigo-400 transition-all text-left group">
+                    <div class="text-indigo-400 font-bold mb-1 group-hover:text-indigo-300">Historic Center</div>
+                    <div class="text-[10px] text-slate-500 mb-3 uppercase font-mono">2 Intersections • 10s Wave</div>
+                    <div class="py-2 bg-indigo-600 group-hover:bg-indigo-500 text-white text-center rounded-lg text-xs font-black uppercase tracking-tighter">
+                        Activate Wave
+                    </div>
+                </button>
+            </div>
+
+            <!-- Přidej do <aside> v index.html pod trasy -->
+            <div class="my-6">
+                <button @click="resetAll()"
+                        class="w-full py-4 rounded-2xl bg-red-900/20 border border-red-500/50 text-red-500 hover:bg-red-500 hover:text-white transition-all font-black uppercase tracking-widest text-sm shadow-lg shadow-red-900/20">
+                    🛑 EMERGENCY RESET (ALL RED)
+                </button>
+            </div>
+
+            <!-- Přidej toto do Sidebaru (aside) nad Route Dispatcher -->
+            <section class="mb-8 bg-slate-900/80 p-5 rounded-2xl border"
+                     :class="isLocked ? 'border-red-500 shadow-lg shadow-red-900/20' : 'border-slate-700'">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h2 class="font-black text-xs uppercase tracking-widest" :class="isLocked ? 'text-red-500' : 'text-slate-400'">
+                            System Lock
+                        </h2>
+                        <p class="text-[10px] text-slate-500">Global Manual Override</p>
+                    </div>
+                    <!-- Status dot -->
+                    <div :class="['w-3 h-3 rounded-full', isLocked ? 'bg-red-500 animate-pulse' : 'bg-slate-600']"></div>
+                </div>
+
+                <button @click="toggleLock"
+                        :class="[
+                'w-full py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2',
+                isLocked ? 'bg-red-600 text-white' : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
+            ]">
+                    <span v-if="isLocked">🔓 UNLOCK SYSTEM</span>
+                    <span v-else>🔒 LOCK SYSTEM</span>
+                </button>
+            </section>
+
+            <div class="mt-auto pt-6 border-t border-slate-700">
+                <div class="bg-slate-900/50 p-4 rounded-xl">
+                    <h4 class="text-[10px] font-bold text-slate-500 uppercase mb-2">Instructions</h4>
+                    <p class="text-[11px] text-slate-400 leading-relaxed">
+                        Activating a route will initiate a timed green wave. Intersections will clear in sequence with a 5s offset.
+                    </p>
+                </div>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+</style>
+
+<script>
+    const { createApp } = Vue
+    createApp({
+        data() {
+            return {
+                trafficLights: [],
+                isLocked: false // Nový stav pro zámek
+            }
+        },
+        methods: {
+            async loadData() {
+                try {
+                    const res = await fetch('/api/v1/traffic-lights');
+                    this.trafficLights = await res.json();
+
+                    // Načtení stavu zámku z nového controlleru
+                    const statusRes = await fetch('/api/v1/system/status');
+                    const statusData = await statusRes.json();
+                    this.isLocked = statusData.manualControlLocked;
+                } catch (e) { console.error("API Offline"); }
+            },
+            async triggerAmbulance(id) {
+                await fetch(`/api/v1/emergency/ambulance-pass?intersectionId=${id}`, { method: 'POST' });
+                this.loadData();
+            },
+            async triggerRoute(routeName) {
+                // Opraveno na POST a parametr routeName dle tvého backendu
+                await fetch(`/api/v1/emergency/green-wave?routeName=${routeName}`, { method: 'GET' });
+            },
+            async resetAll() {
+                if(confirm('Opravdu chcete resetovat celé město na červenou?')) {
+                    await fetch('/api/v1/emergency/reset', { method: 'POST' });
+                    this.loadData();
+                }
+            },
+            async toggleLock() {
+                // Zavolá POST na tvůj nový SystemConfigController
+                const newValue = !this.isLocked;
+                await fetch(`/api/v1/system/lock?value=${newValue}`, { method: 'POST' });
+                this.loadData(); // Okamžitý refresh
+            }
+        },
+        mounted() {
+            this.loadData();
+            setInterval(this.loadData, 1000);
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>

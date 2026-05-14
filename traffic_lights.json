@@ -1,0 +1,64 @@
+[ {
+  "id" : "732f6cc4-efc7-4b5c-9c8c-8a45e25ad2e0",
+  "locationName" : "Prasna brana - Na Prikope",
+  "coordinates" : {
+    "latitude" : 50.0868,
+    "longitude" : 14.4275
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T14:47:19.0700478"
+}, {
+  "id" : "58f7133a-cca2-4cb8-a365-300dcf474814",
+  "locationName" : "I.P. Pavlova - Magistrala",
+  "coordinates" : {
+    "latitude" : 50.0754,
+    "longitude" : 14.4298
+  },
+  "currentState" : "GREEN",
+  "lastUpdate" : "2026-05-13T14:47:54.6253287"
+}, {
+  "id" : "ed5e8703-2ab9-4484-95c1-d4d200dae164",
+  "locationName" : "Letenske namesti",
+  "coordinates" : {
+    "latitude" : 50.0991,
+    "longitude" : 14.4225
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T15:32:01.4781154"
+}, {
+  "id" : "e67144c4-d8d1-41c3-bf32-ea7228c16e7f",
+  "locationName" : "Narodni muzeum - Vinohradska",
+  "coordinates" : {
+    "latitude" : 50.0792,
+    "longitude" : 14.4312
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T15:46:00.2256614"
+}, {
+  "id" : "81e9036f-ac85-4e5b-bced-738edb7ed0d9",
+  "locationName" : "Krizovnicke namesti - Karlov most",
+  "coordinates" : {
+    "latitude" : 50.0864,
+    "longitude" : 14.4138
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T17:13:35.6296299"
+}, {
+  "id" : "db7932af-0987-4055-98c0-3ddf26db2c97",
+  "locationName" : "Malostranske namesti",
+  "coordinates" : {
+    "latitude" : 50.0882,
+    "longitude" : 14.4036
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T17:13:40.7663792"
+}, {
+  "id" : "df8e437b-11a0-447f-9487-070323bb067a",
+  "locationName" : "Holzgerlingen",
+  "coordinates" : {
+    "latitude" : 50.0882,
+    "longitude" : 14.4036
+  },
+  "currentState" : "RED",
+  "lastUpdate" : "2026-05-13T22:10:55.3740638"
+} ]
