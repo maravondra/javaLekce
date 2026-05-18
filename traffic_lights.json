@@ -5,7 +5,7 @@
     "latitude" : 50.0868,
     "longitude" : 14.4275
   },
-  "currentState" : "RED",
+  "currentState" : "EMERGENCY_GREEN",
   "lastUpdate" : "2026-05-13T14:47:19.0700478"
 }, {
   "id" : "58f7133a-cca2-4cb8-a365-300dcf474814",
@@ -14,7 +14,7 @@
     "latitude" : 50.0754,
     "longitude" : 14.4298
   },
-  "currentState" : "GREEN",
+  "currentState" : "RED",
   "lastUpdate" : "2026-05-13T14:47:54.6253287"
 }, {
   "id" : "ed5e8703-2ab9-4484-95c1-d4d200dae164",
@@ -23,7 +23,7 @@
     "latitude" : 50.0991,
     "longitude" : 14.4225
   },
-  "currentState" : "RED",
+  "currentState" : "GREEN",
   "lastUpdate" : "2026-05-13T15:32:01.4781154"
 }, {
   "id" : "e67144c4-d8d1-41c3-bf32-ea7228c16e7f",
@@ -50,7 +50,7 @@
     "latitude" : 50.0882,
     "longitude" : 14.4036
   },
-  "currentState" : "RED",
+  "currentState" : "GREEN",
   "lastUpdate" : "2026-05-13T17:13:40.7663792"
 }, {
   "id" : "df8e437b-11a0-447f-9487-070323bb067a",
@@ -59,6 +59,6 @@
     "latitude" : 50.0882,
     "longitude" : 14.4036
   },
-  "currentState" : "RED",
+  "currentState" : "GREEN",
   "lastUpdate" : "2026-05-13T22:10:55.3740638"
 } ]
